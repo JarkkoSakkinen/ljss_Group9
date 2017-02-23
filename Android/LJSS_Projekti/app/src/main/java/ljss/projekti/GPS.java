@@ -15,9 +15,10 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.provider.Settings;
-import android.util.Log;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class GPS extends Service implements LocationListener {
 
@@ -26,8 +27,10 @@ public class GPS extends Service implements LocationListener {
     boolean isNetworkEnabled = false;
     boolean canGetLocation = false;
     Location location; // location
-    double latitude; // latitude
-    double longitude; // longitude
+    Double latitude; // latitude
+    Double longitude; // longitude
+    Double altitude;  // altitude
+    Long time;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
     private static final long MIN_TIME_BW_UPDATES = 1000 * 10 * 1; // 1 minute  1000 60 1
     public LocationManager locationManager;
@@ -79,11 +82,13 @@ public class GPS extends Service implements LocationListener {
 
                 location = locationManager
                         .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                location.setTime(System.currentTimeMillis());
 
                 if (location != null) {
 
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
+                    altitude = location.getAltitude();
                 }
             }
         }
@@ -102,11 +107,13 @@ public class GPS extends Service implements LocationListener {
 
                     location = locationManager
                             .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    location.setTime(System.currentTimeMillis());
 
                     if (location != null) {
 
                         latitude = location.getLatitude();
                         longitude = location.getLongitude();
+                        altitude = location.getAltitude();
                     }
                 }
             }
@@ -132,10 +139,21 @@ public class GPS extends Service implements LocationListener {
         return longitude;
     }
 
+    public double getAltitude() {
+        if(location != null){
+            longitude = location.getAltitude();
+        }
+
+        // return altitude
+        return altitude;
+    }
+
+
     @Override
     public void onLocationChanged(Location location) {
-        getLatitude();
-        getLongitude();
+        latitude = getLatitude();
+        longitude = getLongitude();
+        altitude = getAltitude();
     }
 
     @Override

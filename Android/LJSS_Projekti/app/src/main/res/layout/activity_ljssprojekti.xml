@@ -16,15 +16,73 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView2"
+        android:id="@+id/LatitudeView"
         android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/LatitudeView"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView3"
+        android:id="@+id/LongitudeView"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/fsView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="10"
+        android:editable="true"
+        android:enabled="true"
+        android:imeOptions="actionDone" />
+
+    <TextView
+        android:text="FS:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fsView"
+        android:layout_alignParentStart="true"
+        android:id="@+id/fsInfoTextView"
+        tools:text="FS:" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TimeView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp"
+        android:id="@+id/distanceTraveledView" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/currentSpeedView"
+        android:layout_below="@+id/distanceTraveledView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TimeView"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/AltitudeView"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AltitudeView"
+        android:layout_below="@+id/LongitudeView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
